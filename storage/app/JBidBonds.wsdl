@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.craftsilicon.com/banking/core" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.craftsilicon.com/banking/core" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.craftsilicon.com/banking/core">
+      <s:element name="RequestConnectionSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UInfoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestConnectonSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestConnectionSessionResult" type="tns:Response"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Response">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DS_Details" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerDetails" type="tns:CustomerDetails"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CustomerDetails">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Session">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ClientTypeID" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="ProductID" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="AccountOfficerID" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="CountryID" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="CityID" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="EmailID" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="AddressTypeID" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Phone1" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="KRAPin" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="IndividualCustomer" type="tns:IndividualCustomer"/>
+              <s:element minOccurs="0" maxOccurs="1" name="CorporateCustomer" type="tns:CorporateCustomer"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Session">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IndividualCustomer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TitleID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="GenderID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NationalityID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DateOfBirth" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ResidentID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IdentificationNo" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IdentificationIssuedCityID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IdentificationExpiryDate" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IdentificationTypeID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CorporateCustomer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrationDate" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrationNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistratedAt" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegisteredOffice" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessDescription" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IdentificationTypeID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessLineID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessOwnershipID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterCustomerResult" type="tns:Response"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountDetails">
+              <s:complexType>
+                <s:complexContent mixed="false">
+                  <s:extension base="tns:Session">
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="1" name="AccountID" type="s:string"/>
+                    </s:sequence>
+                  </s:extension>
+                </s:complexContent>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccountDetailsResult" type="tns:Response"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BidBondApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BidBondApplication">
+              <s:complexType>
+                <s:complexContent mixed="false">
+                  <s:extension base="tns:Session">
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="1" name="OurBranchID" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="ClientName" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="AccountID" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="ProductID" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="CurrencyID" type="s:string"/>
+                      <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="ExpiryDate" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="TenderNumber" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="TenderDate" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="ChargeAccountID" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="ValueDate" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="ApplicationDate" type="s:string"/>
+                      <s:element minOccurs="0" maxOccurs="1" name="AccountOfficerID" type="s:string"/>
+                    </s:sequence>
+                  </s:extension>
+                </s:complexContent>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BidBondApplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BidBondApplicationResult" type="tns:Response"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Response" type="tns:Response"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RequestConnectionSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestConnectionSession"/>
+  </wsdl:message>
+  <wsdl:message name="RequestConnectionSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestConnectionSessionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterCustomer"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterCustomerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAccountDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccountDetails"/>
+  </wsdl:message>
+  <wsdl:message name="GetAccountDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccountDetailsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="BidBondApplicationSoapIn">
+    <wsdl:part name="parameters" element="tns:BidBondApplication"/>
+  </wsdl:message>
+  <wsdl:message name="BidBondApplicationSoapOut">
+    <wsdl:part name="parameters" element="tns:BidBondApplicationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RequestConnectionSessionHttpGetIn">
+    <wsdl:part name="UInfoXML" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RequestConnectionSessionHttpGetOut">
+    <wsdl:part name="Body" element="tns:Response"/>
+  </wsdl:message>
+  <wsdl:message name="RequestConnectionSessionHttpPostIn">
+    <wsdl:part name="UInfoXML" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RequestConnectionSessionHttpPostOut">
+    <wsdl:part name="Body" element="tns:Response"/>
+  </wsdl:message>
+  <wsdl:portType name="JBidBondsSoap">
+    <wsdl:operation name="RequestConnectionSession">
+      <wsdl:documentation>Authenticate user credentials to output a session for other API operations access</wsdl:documentation>
+      <wsdl:input message="tns:RequestConnectionSessionSoapIn"/>
+      <wsdl:output message="tns:RequestConnectionSessionSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCustomer">
+      <wsdl:documentation>Onboards a new Customer to the Core Banking System</wsdl:documentation>
+      <wsdl:input message="tns:RegisterCustomerSoapIn"/>
+      <wsdl:output message="tns:RegisterCustomerSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <wsdl:documentation>Obtains the details of the specified Account</wsdl:documentation>
+      <wsdl:input message="tns:GetAccountDetailsSoapIn"/>
+      <wsdl:output message="tns:GetAccountDetailsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="BidBondApplication">
+      <wsdl:documentation>Requests a Bid Bond Application on the Core Banking System</wsdl:documentation>
+      <wsdl:input message="tns:BidBondApplicationSoapIn"/>
+      <wsdl:output message="tns:BidBondApplicationSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="JBidBondsHttpGet">
+    <wsdl:operation name="RequestConnectionSession">
+      <wsdl:documentation>Authenticate user credentials to output a session for other API operations access</wsdl:documentation>
+      <wsdl:input message="tns:RequestConnectionSessionHttpGetIn"/>
+      <wsdl:output message="tns:RequestConnectionSessionHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="JBidBondsHttpPost">
+    <wsdl:operation name="RequestConnectionSession">
+      <wsdl:documentation>Authenticate user credentials to output a session for other API operations access</wsdl:documentation>
+      <wsdl:input message="tns:RequestConnectionSessionHttpPostIn"/>
+      <wsdl:output message="tns:RequestConnectionSessionHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JBidBondsSoap" type="tns:JBidBondsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RequestConnectionSession">
+      <soap:operation soapAction="http://www.craftsilicon.com/banking/core/RequestConnectionSession" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCustomer">
+      <soap:operation soapAction="http://www.craftsilicon.com/banking/core/RegisterCustomer" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <soap:operation soapAction="http://www.craftsilicon.com/banking/core/GetAccountDetails" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BidBondApplication">
+      <soap:operation soapAction="http://www.craftsilicon.com/banking/core/BidBondApplication" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JBidBondsSoap12" type="tns:JBidBondsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RequestConnectionSession">
+      <soap12:operation soapAction="http://www.craftsilicon.com/banking/core/RequestConnectionSession" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterCustomer">
+      <soap12:operation soapAction="http://www.craftsilicon.com/banking/core/RegisterCustomer" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <soap12:operation soapAction="http://www.craftsilicon.com/banking/core/GetAccountDetails" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BidBondApplication">
+      <soap12:operation soapAction="http://www.craftsilicon.com/banking/core/BidBondApplication" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JBidBondsHttpGet" type="tns:JBidBondsHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="RequestConnectionSession">
+      <http:operation location="/RequestConnectionSession"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JBidBondsHttpPost" type="tns:JBidBondsHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="RequestConnectionSession">
+      <http:operation location="/RequestConnectionSession"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JBidBonds">
+    <wsdl:port name="JBidBondsSoap" binding="tns:JBidBondsSoap">
+      <soap:address location="http://localhost:2307/JBidBonds.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="JBidBondsSoap12" binding="tns:JBidBondsSoap12">
+      <soap12:address location="http://localhost:2307/JBidBonds.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="JBidBondsHttpGet" binding="tns:JBidBondsHttpGet">
+      <http:address location="http://localhost:2307/JBidBonds.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="JBidBondsHttpPost" binding="tns:JBidBondsHttpPost">
+      <http:address location="http://localhost:2307/JBidBonds.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,16 @@
+/node_modules
+/public/hot
+/public/Documents/Company
+/public/storage
+/storage/*.key
+/storage/logs
+/vendor
+.env
+/.idea
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.DS_STORE
+**/.DS_Store
